@@ -1,3 +1,15 @@
+bluetooth.onBluetoothConnected(function () {
+    basic.showLeds(`
+        . . # # .
+        # . # . #
+        . # # # .
+        # . # . #
+        . . # # .
+        `)
+})
+bluetooth.onBluetoothDisconnected(function () {
+    basic.showIcon(IconNames.No)
+})
 input.onPinReleased(TouchPin.P1, function () {
     if (input.acceleration(Dimension.X) < 0) {
         mouse.click()
