@@ -1,5 +1,5 @@
 {
-    "name": "mm-microbit",
+    "name": "pxt",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -21,16 +21,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj",
-    "yotta": {
-        "config": {
-            "microbit-dal": {
-                "bluetooth": {
-                    "open": 1,
-                    "whitelist": 0,
-                    "security_level": null
-                }
-            }
-        }
-    }
+    "preferredEditor": "blocksprj"
 }
