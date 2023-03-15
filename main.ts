@@ -1,3 +1,10 @@
+input.onPinReleased(TouchPin.P1, function () {
+    if (input.acceleration(Dimension.X) < 0) {
+        mouse.click()
+    } else if (input.acceleration(Dimension.X) > 0) {
+        mouse.rightClick()
+    }
+})
 input.onLogoEvent(TouchButtonEvent.Released, function () {
     media.sendCode(media.keys(media._MediaKey.playPause))
 })
@@ -22,15 +29,6 @@ basic.forever(function () {
         }
         if (50 > input.acceleration(Dimension.Y) || -50 < input.acceleration(Dimension.Y)) {
             mouse.movexy(0, input.acceleration(Dimension.Y) / 20)
-        }
-    }
-})
-basic.forever(function () {
-    while (input.pinIsPressed(TouchPin.P1)) {
-        if (input.acceleration(Dimension.X) < 0) {
-            mouse.click()
-        } else if (input.acceleration(Dimension.X) > 0) {
-            mouse.rightClick()
         }
     }
 })
