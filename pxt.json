@@ -1,5 +1,5 @@
 {
-    "name": "pxt",
+    "name": "mm-microbit",
     "description": "",
     "dependencies": {
         "core": "*",
