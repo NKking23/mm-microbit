@@ -20,6 +20,7 @@ input.onPinReleased(TouchPin.P1, function () {
 input.onLogoEvent(TouchButtonEvent.Released, function () {
     media.sendCode(media.keys(media._MediaKey.playPause))
 })
+basic.showIcon(IconNames.No)
 media.startMediaService()
 mouse.startMouseService()
 pins.touchSetMode(TouchTarget.P0, TouchTargetMode.Capacitive)
