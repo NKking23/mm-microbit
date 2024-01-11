@@ -1,4 +1,5 @@
 bluetooth.onBluetoothConnected(function () {
+    music.play(music.stringPlayable("C5 C5 G G E E C C ", 250), music.PlaybackMode.InBackground)
     basic.showLeds(`
         . . # # .
         # . # . #
@@ -8,6 +9,7 @@ bluetooth.onBluetoothConnected(function () {
         `)
 })
 bluetooth.onBluetoothDisconnected(function () {
+    music.play(music.stringPlayable("C E G C5 C5 G C5 C5 ", 250), music.PlaybackMode.InBackground)
     basic.showIcon(IconNames.No)
 })
 input.onPinReleased(TouchPin.P1, function () {
