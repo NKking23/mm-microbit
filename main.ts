@@ -1,5 +1,5 @@
 bluetooth.onBluetoothConnected(function () {
-    music.play(music.stringPlayable("C5 C5 G G E E C C ", 250), music.PlaybackMode.InBackground)
+    music.play(music.stringPlayable("C E G C5 C5 G C5 C5 ", 250), music.PlaybackMode.InBackground)
     basic.showLeds(`
         . . # # .
         # . # . #
@@ -9,8 +9,8 @@ bluetooth.onBluetoothConnected(function () {
         `)
 })
 bluetooth.onBluetoothDisconnected(function () {
-    music.play(music.stringPlayable("C E G C5 C5 G C5 C5 ", 250), music.PlaybackMode.InBackground)
     basic.showIcon(IconNames.No)
+    music.play(music.stringPlayable("C5 C5 G G E E C C ", 250), music.PlaybackMode.InBackground)
 })
 input.onPinReleased(TouchPin.P1, function () {
     if (input.acceleration(Dimension.X) < 0) {
@@ -25,12 +25,13 @@ input.onLogoEvent(TouchButtonEvent.Released, function () {
 basic.showIcon(IconNames.No)
 media.startMediaService()
 mouse.startMouseService()
-pins.touchSetMode(TouchTarget.P0, TouchTargetMode.Capacitive)
-pins.touchSetMode(TouchTarget.P1, TouchTargetMode.Capacitive)
-pins.touchSetMode(TouchTarget.P2, TouchTargetMode.Capacitive)
+pins.touchSetMode(TouchTarget.P0, TouchTargetMode.Resistive)
+pins.touchSetMode(TouchTarget.P1, TouchTargetMode.Resistive)
+pins.touchSetMode(TouchTarget.P2, TouchTargetMode.Resistive)
 pins.touchSetMode(TouchTarget.LOGO, TouchTargetMode.Capacitive)
 basic.forever(function () {
     while (input.pinIsPressed(TouchPin.P2)) {
+        led.plot(1, 0)
         if (50 > input.acceleration(Dimension.X) || -50 < input.acceleration(Dimension.X)) {
             mouse.movexy(input.acceleration(Dimension.X) / 20, 0)
         }
@@ -38,6 +39,7 @@ basic.forever(function () {
             mouse.movexy(0, input.acceleration(Dimension.Y) / 20)
         }
     }
+    led.unplot(1, 0)
 })
 basic.forever(function () {
     while (input.buttonIsPressed(Button.A)) {
